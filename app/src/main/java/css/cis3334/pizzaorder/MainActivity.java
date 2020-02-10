@@ -21,6 +21,10 @@ public class MainActivity extends AppCompatActivity implements updateViewInterfa
     TextView txtPizzasOrdered;
     Spinner spinnerToppings;
     PizzaOrderInterface pizzaOrderSystem;
+    String size;
+    boolean extraCheese = false;
+    boolean delivery = false;
+    String topping;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,8 @@ public class MainActivity extends AppCompatActivity implements updateViewInterfa
         // Set up the Spinner
         spinnerToppings = (Spinner) findViewById(R.id.spinnerToppings);
 
+
+
     }
 
     @Override
@@ -56,14 +62,63 @@ public class MainActivity extends AppCompatActivity implements updateViewInterfa
         txtStatus.setText("Order Status: " + orderStatus);
     }
 
+    public void radioButtonSizeClicked(View view) {
+
+        boolean checked = ((RadioButton) view).isChecked();
+
+
+        switch (view.getId()) {
+            case R.id.radioButtonSmall:
+                if (checked)
+                    size = "small";
+                break;
+            case R.id.radioButtonMedium:
+                if (checked)
+                    size = "medium";
+                break;
+            case R.id.radioButtonLarge:
+                if (checked)
+                    size = "large";
+                break;
+
+        }
+    }
+        public void checkboxExtraCheeseClick (View view) {
+
+            boolean checked = ((CheckBox) view).isChecked();
+
+
+            switch(view.getId()) {
+                case R.id.checkBoxCheese:
+                    if (checked)
+                        extraCheese = true;
+                    break;
+
+
+            }
+        }
+    public void checkboxDeliveryClick (View view) {
+
+        boolean checked = ((CheckBox) view).isChecked();
+
+
+        switch(view.getId()) {
+            case R.id.checkBoxDeluvery:
+                if (checked)
+                    delivery = true;
+                break;
+
+
+        }
+    }
     public void onClickOrder(View view) {
-        // ****** For the Assignment, students need to add code here to get information from the UI widgets...
 
-        //String orderDescription = "No orders yet";
-        String orderDescription = pizzaOrderSystem.OrderPizza("Pepperoni", "large", false);
-        // ****** For the Practice Activity, students need to call to OrderPizza here
-        // ****** For the Assignment, students will modify the order to fit the type of pizza the user selects using the UI widgets
-
+        //get the selected topping from the spinner
+        topping = spinnerToppings.getSelectedItem().toString();
+        //set if delivery charge should be added
+        pizzaOrderSystem.setDelivery(delivery);
+        //order a pizza based on user selections
+        String orderDescription = pizzaOrderSystem.OrderPizza(topping, size, extraCheese);
         //display a pop up message for a long period of time
         Toast.makeText(getApplicationContext(), "You have ordered a "+orderDescription , Toast.LENGTH_LONG).show();
         //get the order total from the order system

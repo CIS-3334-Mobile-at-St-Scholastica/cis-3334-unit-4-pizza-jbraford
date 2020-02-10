@@ -16,25 +16,28 @@
         android:layout_height="wrap_content">
 
         <RadioButton
-            android:text="@string/small_pizza"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/radioButtonSmall"
-            android:layout_weight="1" />
-
-        <RadioButton
-            android:text="@string/medium_pizza"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="radioButtonSizeClicked"
+            android:text="@string/small_pizza" />
+
+        <RadioButton
             android:id="@+id/radioButtonMedium"
-            android:layout_weight="1" />
-
-        <RadioButton
-            android:text="@string/large_pizza"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="radioButtonSizeClicked"
+            android:text="@string/medium_pizza" />
+
+        <RadioButton
             android:id="@+id/radioButtonLarge"
-            android:layout_weight="1" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="radioButtonSizeClicked"
+            android:text="@string/large_pizza" />
 
     </RadioGroup>
 
@@ -45,11 +48,12 @@
         android:entries="@array/toppings" />
 
     <CheckBox
-        android:text="CheckBoxExtraCheese"
+        android:id="@+id/checkBoxCheese"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/checkBoxCheese"
-        android:layout_marginTop="12dp" />
+        android:layout_marginTop="12dp"
+        android:onClick="checkboxExtraCheeseClick"
+        android:text="CheckBoxExtraCheese" />
 
     <Button
         android:text="Order"
@@ -59,10 +63,11 @@
         android:onClick="onClickOrder" />
 
     <CheckBox
-        android:text="CheckBoxDelivery"
+        android:id="@+id/checkBoxDeluvery"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/checkBoxDeluvery" />
+        android:onClick="checkboxDeliveryClick"
+        android:text="CheckBoxDelivery" />
 
     <TextView
         android:text="Total Due:"
