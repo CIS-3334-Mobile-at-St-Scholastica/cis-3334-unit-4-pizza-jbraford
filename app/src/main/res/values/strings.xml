@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">PizzaOrder</string>
     <string name="small_pizza">Small Pizza</string>
-    <string name="mediumpizza">MediumPizza</string>
+    <string name="medium_pizza">Medium Pizza</string>
     <string name="large_pizza">Large Pizza</string>
     <string-array name="toppings">
         <item>Pepperoni</item>
